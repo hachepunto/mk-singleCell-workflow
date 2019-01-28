@@ -1,0 +1,10 @@
+results/%_tagged_srtd.bam:	data/%_tagged.bam
+	picard-tools \
+		I=$prereq \
+		O=$target'.build' \
+		SORT_ORDER=queryname\
+	&& mv $target'.build' $target
+
+clean:V:
+		bin/targets | xargs rm -rf
+		rm -rf results/

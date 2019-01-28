@@ -1,0 +1,6 @@
+#!/bin/sh
+
+find -L data/ \
+	-name '*_tagged.bam' \
+| sed -r -e 's#data/#results/#g' \
+	-e 's#_tagged\.bam#_tagged_srtd.bam#g'

@@ -1,0 +1,12 @@
+
+<|bin/prereqs
+results/%.fastq.gz:
+	set -x
+	mkdir -p results
+	bin/which-fastq-belong-sample $stem > results/${stem}_list.txt
+	cat $(cat results/${stem}_list.txt) > results/$stem'.fastq.gz.build' \
+		&& mv results/$stem'.fastq.gz.build' results/$stem'.fastq.gz'
+
+clean:V:
+        bin/targets | xargs rm -rf
+        rm -rf results/

@@ -1,0 +1,12 @@
+<../config.mk
+
+results/%_tagged_filtered.bam:	data/%_tagged_srtd.bam
+	$DST_HOME'FilterBam' \
+		TAG_REJECT=XE \
+		INPUT=$prereq \
+		OUTPUT=$target'.build' \
+	&& mv $target'.build' $target
+
+clean:V:
+        bin/targets | xargs rm -rf
+        rm -rf results/

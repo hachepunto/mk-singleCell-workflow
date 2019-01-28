@@ -1,0 +1,14 @@
+<../config.mk
+
+JAVA_OPTIONS='-Xmx500m'
+
+results/%.fastq: data/%_tagged_filtered.bam
+	picard-tools \
+		SamToFastq \
+		I=$prereq \
+		FASTQ=$target'.build' \
+	&& mv $target'.build' $target
+
+clean:V:
+        bin/targets | xargs rm -rf
+        rm -rf results/

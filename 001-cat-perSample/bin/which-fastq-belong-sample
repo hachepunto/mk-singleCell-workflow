@@ -1,0 +1,7 @@
+#!/bin/bash
+
+array=($(echo $1 | awk '{split($0,cmd_array,"_")} END {for(n in cmd_array){ print cmd_array[n] }}'))
+find -L data \
+	-type f \
+	-name '*_'${array[0]}'_*_'${array[1]}'_*fastq.gz'
+

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Set up a dynamic mkfile for correctly updating merge targets.
+
+bin/samples \
+| xargs -I @ sh -c 'echo "results/@.fastq.gz:	$(bin/which-fastq-belong-sample @ | tr "\n" "\t" )"'
+
