@@ -12,5 +12,5 @@ results/%.fastq: data/%_tagged_filtered.bam
 	&& mv $target'.build' $target
 
 clean:V:
-        bin/targets | xargs rm -rf
-        rm -rf results/
+		bin/targets | xargs rm -rf
+		rm -rf results/

@@ -3,4 +3,4 @@
 find -L data/ \
 	-name '*.fastq' \
 | sed -r -e 's#data/#results/#g' \
-	-e 's#\.fastq#.sam#g'
+	-e 's#\.fastq#.aligned.sam#g'

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+find -L data/ \
+	-name '*.merged.bam' \
+| sed -r -e 's#data/#results/#g' \
+	-e 's#\.merged\.bam#.gen_exon_tged.bam#g'

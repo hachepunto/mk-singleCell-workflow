@@ -1,12 +1,13 @@
 <../config.mk
 
-results/%_tagged_filtered.bam:	data/%_tagged_srtd.bam
+results/%.gen_exon_tged.bam:	data/%.merged.bam
 	set -x
 	mkdir -p results
-	$DST_HOME'/FilterBam' \
-		TAG_REJECT=XE \
+	$DST_HOME'TagReadWithGeneExonFunction' \
 		INPUT=$prereq \
 		OUTPUT=$target'.build' \
+		ANNOTATIONS_FILE=$GTF \
+		TAG=GE \
 	&& mv $target'.build' $target
 
 clean:V:

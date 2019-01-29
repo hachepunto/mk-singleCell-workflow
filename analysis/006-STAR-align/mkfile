@@ -1,6 +1,6 @@
 <../config.mk
 
-results/%.sam:	data/%.fastq
+results/%.aligned.sam:	data/%.fastq
 	set -x
 	mkdir -p results
 	RES_DIR=`echo $prereq \

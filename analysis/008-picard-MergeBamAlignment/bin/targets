@@ -1,6 +1,6 @@
 #!/bin/sh
 
 find -L data/ \
-	-name '*_tagged_filtered.bam' \
+	-name '*.aligned.bam' \
 | sed -r -e 's#data/#results/#g' \
-	-e 's#_tagged_filtered\.bam#.fastq#g'
+	-e 's#\.aligned\.bam#.merged.bam#g'
