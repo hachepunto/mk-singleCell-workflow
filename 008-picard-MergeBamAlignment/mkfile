@@ -1,0 +1,21 @@
+<../config.mk
+
+JAVA_OPTIONS='-Xmx500m'
+
+results/%.merged.bam: ../004-dropseq-filterBAM/results/%_tagged_filtered.bam data/%.aligned.bam
+	set -x
+	mkdir -p results
+	picard-tools \
+		MergeBamAlignment \
+		REFERENCE_SEQUENCE=$FASTA_REF \
+		UNMAPPED_BAM='../004-dropseq-filterBAM/results/'$stem'_tagged_filtered.bam' \
+		ALIGNED_BAM='data/'$stem'.aligned.bam' \
+		PAIRED_RUN=false \
+		INCLUDE_SECONDARY_ALIGNMENTS=false \
+		OUTPUT=$target'.build' \
+	&& mv $target'.build' $target
+
+
+clean:V:
+        bin/targets | xargs rm -rf
+        rm -rf results/

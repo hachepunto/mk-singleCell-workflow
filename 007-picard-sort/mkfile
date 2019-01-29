@@ -2,7 +2,6 @@ results/%_tagged_srtd.bam:	data/%_tagged.bam
 	set -x
 	mkdir -p results
 	picard-tools \
-		SortSam \
 		I=$prereq \
 		O=$target'.build' \
 		SORT_ORDER=queryname\

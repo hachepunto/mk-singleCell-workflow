@@ -3,6 +3,8 @@
 JAVA_OPTIONS='-Xmx500m'
 
 results/%.fastq: data/%_tagged_filtered.bam
+	set -x
+	mkdir -p results
 	picard-tools \
 		SamToFastq \
 		I=$prereq \
