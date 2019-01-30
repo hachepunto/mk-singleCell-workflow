@@ -1,9 +1,11 @@
 
 <../config.mk
 
+
 results/%_tagged.bam:	data/%_R1.fastq.gz data/%_R2.fastq.gz
 	set -x
 	mkdir -p results
+	. $DDS_ENV'/bin/activate'
 	$DDS_HOME'ddSeeker.py' \
 		--input $prereq \
 		--output $target'.build' \
