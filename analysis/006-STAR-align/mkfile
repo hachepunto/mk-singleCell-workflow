@@ -6,13 +6,13 @@ results/%.aligned.sam:	data/%.fastq
 	RES_DIR=`echo $prereq \
 		| sed -e "s#data/#results/#g" \
 		| sed -e "s#\.fastq##g"`
+	mkdir -p $RES_DIR
 	STAR \
-		--runThreadN=4 \
+		--runThreadN=$NCSTAR \
 		--genomeDir=$STAR_REFERENCEDIR \
 		--readFilesIn=$prereq \
 		--outFileNamePrefix=$RES_DIR'/' \
 		--outReadsUnmapped=Fastx \
-		--runThreadN=$NCSTAR \
 	&& mv $RES_DIR'/Aligned.out.sam' $target \
 	&& mv $RES_DIR'/Unmapped.out.mate1' 'results/'$stem'.unmapped.fastq'
 
