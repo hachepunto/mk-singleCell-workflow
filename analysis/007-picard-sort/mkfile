@@ -4,9 +4,9 @@ results/%.aligned.bam:	data/%.aligned.sam
 	picard-tools \
 		SortSam \
 		I=$prereq \
-		O=$target'.build' \
+		O=$target'.build.bam' \
 		SORT_ORDER=queryname\
-	&& mv $target'.build' $target
+	&& mv $target'.build.bam' $target
 
 clean:V:
 		bin/targets | xargs rm -rf

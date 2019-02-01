@@ -3,4 +3,4 @@
 find -L data/ \
 	-name '*.sam' \
 | sed -r -e 's#data/#results/#g' \
-	-e 's#\.sam#.aligned.bam#g'
+	-e 's#\.sam#.bam#g'

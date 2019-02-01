@@ -1,6 +1,6 @@
 <../config.mk
 
-JAVA_OPTIONS='-Xmx500m'
+JAVA_OPTIONS='-Xmx4000m'
 
 results/%.merged.bam:	data/%.aligned.bam ../004-dropseq-filterBAM/results/%_tagged_filtered.bam
 	set -x
